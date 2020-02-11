@@ -163,7 +163,7 @@ plsda <- function(x, c, ncomp = min(nrow(x) - 1, ncol(x), 20), center = TRUE, sc
    # get reference y-values for regression
    y <- mda.df2mat(as.factor(c), full = TRUE)
    y <- y[, colnames(y) != "None", drop = FALSE]
-   y[y == 0] <- -1
+   y[y == 0] <- 0
    colnames(y) <- classnames
    rownames(y) <- rownames(x)
 
@@ -308,7 +308,7 @@ predict.plsda <- function(object, x, c.ref = NULL, ...) {
 #' This is a service function for PLS-DA class, do not use it manually.
 #'
 classify.plsda <- function(model, y) {
-   c.pred <- ifelse(y < 0, -1, 1)
+   c.pred <- ifelse(y < 0, 0, 1)
    c.pred <- mda.setattr(c.pred, mda.getattr(y))
    attr(c.pred, "name") <- "Class, predicted values"
    dimnames(c.pred) <- dimnames(y)
