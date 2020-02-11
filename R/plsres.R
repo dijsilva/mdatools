@@ -3,7 +3,7 @@
 #' @description
 #' \code{plsres} is used to store and visualize results of applying a PLS model to a new data.
 #'
-#' @param y.pred
+#' @param y.pred 
 #' predicted y values.
 #' @param y.ref
 #' reference (measured) y values.
