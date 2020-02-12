@@ -273,7 +273,8 @@ predict.plsda <- function(object, x, c.ref = NULL, ...) {
    if (!is.null(c.ref)) {
       attrs <- mda.getattr(c.ref)
       c.ref <- classmodel.processRefValues(c.ref, object$classnames)
-      y.ref <- sapply(object$classnames, function(c) c == c.ref) * 2 - 1
+      y.ref <- sapply(object$classnames, function(c) c == c.ref)
+      y.ref[y.ref == 0] <- 0
       y.ref <- mda.setattr(y.ref, attrs)
       colnames(y.ref) <- object$classnames
       rownames(y.ref) <- rownames(x)
